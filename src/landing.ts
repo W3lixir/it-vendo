@@ -16,6 +16,7 @@ interface RotatingTextConfig {
 interface ContactFormData {
   name: string;
   email: string;
+  phone?: string;
   message: string;
   plan?: string;
 }
@@ -120,22 +121,23 @@ function setFormStatus(form: HTMLFormElement, status: FormStatus, message?: stri
   }
 }
 
-function initContactForm(formId: string, formspreeId: string): void {
+const FORM_EMAIL = 'karlitvendo@gmail.com';
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
+
+function initContactForm(formId: string): void {
   const form = document.getElementById(formId) as HTMLFormElement | null;
   if (!form) return;
-
-  form.action = `https://formspree.io/f/${formspreeId}`;
-  form.method = 'POST';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = (getFormElement<HTMLInputElement>(formId, 'name')?.value ?? '').trim();
     const email = (getFormElement<HTMLInputElement>(formId, 'email')?.value ?? '').trim();
+    const phone = (getFormElement<HTMLInputElement>(formId, 'phone')?.value ?? '').trim();
     const message = (getFormElement<HTMLTextAreaElement>(formId, 'message')?.value ?? '').trim();
     const plan = getFormElement<HTMLSelectElement>(formId, 'plan')?.value;
 
-    const data: ContactFormData = { name, email, message, plan };
+    const data: ContactFormData = { name, email, phone: phone || undefined, message, plan };
     const errors = validateForm(data);
 
     if (errors.length > 0) {
@@ -146,10 +148,17 @@ function initContactForm(formId: string, formspreeId: string): void {
     setFormStatus(form, 'submitting', 'Sending...');
 
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: phone || '—',
+          message,
+          plan: plan ?? 'General inquiry',
+          _subject: 'IT Vendo - Contact Form Submission',
+        }),
       });
 
       if (res.ok) {
@@ -164,12 +173,9 @@ function initContactForm(formId: string, formspreeId: string): void {
   });
 }
 
-function initDemoForm(formId: string, formspreeId: string): void {
+function initDemoForm(formId: string): void {
   const form = document.getElementById(formId) as HTMLFormElement | null;
   if (!form) return;
-
-  form.action = `https://formspree.io/f/${formspreeId}`;
-  form.method = 'POST';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -198,10 +204,17 @@ function initDemoForm(formId: string, formspreeId: string): void {
     }
 
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
-        body: JSON.stringify({ name, email, phone, plan: plan || app, type: 'demo' }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          plan: plan || app || 'Demo request',
+          type: 'demo',
+          _subject: 'IT Vendo - Demo Request',
+        }),
       });
 
       if (res.ok) {
@@ -325,8 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
     'PropManager',
   ] as const;
 
-  const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // Replace with your Formspree form ID
-
   initRotatingText({
     containerId: 'rotating-text',
     items: ROTATING_TEXTS,
@@ -338,9 +349,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal('.animate-on-scroll');
   initScrollReveal('.app-card', { threshold: 0.2 });
 
-  initContactForm('contact-form', FORMSPREE_ID);
-  initContactForm('contact-form-modal', FORMSPREE_ID);
-  initDemoForm('demo-form', FORMSPREE_ID);
+  initContactForm('contact-form');
+  initContactForm('contact-form-modal');
+  initDemoForm('demo-form');
 
   initMobileNav();
   initFormModals();

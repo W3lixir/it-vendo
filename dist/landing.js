@@ -79,19 +79,20 @@ function setFormStatus(form, status, message) {
             statusEl.classList.add('text-gray-500');
     }
 }
-function initContactForm(formId, formspreeId) {
+const FORM_EMAIL = 'karlitvendo@gmail.com';
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
+function initContactForm(formId) {
     const form = document.getElementById(formId);
     if (!form)
         return;
-    form.action = `https://formspree.io/f/${formspreeId}`;
-    form.method = 'POST';
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = (getFormElement(formId, 'name')?.value ?? '').trim();
         const email = (getFormElement(formId, 'email')?.value ?? '').trim();
+        const phone = (getFormElement(formId, 'phone')?.value ?? '').trim();
         const message = (getFormElement(formId, 'message')?.value ?? '').trim();
         const plan = getFormElement(formId, 'plan')?.value;
-        const data = { name, email, message, plan };
+        const data = { name, email, phone: phone || undefined, message, plan };
         const errors = validateForm(data);
         if (errors.length > 0) {
             setFormStatus(form, 'error', errors.join('. '));
@@ -99,10 +100,17 @@ function initContactForm(formId, formspreeId) {
         }
         setFormStatus(form, 'submitting', 'Sending...');
         try {
-            const res = await fetch(form.action, {
+            const res = await fetch(FORMSUBMIT_URL, {
                 method: 'POST',
-                body: JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone: phone || '—',
+                    message,
+                    plan: plan ?? 'General inquiry',
+                    _subject: 'IT Vendo - Contact Form Submission',
+                }),
             });
             if (res.ok) {
                 setFormStatus(form, 'success', 'Thanks! We\'ll get back to you soon.');
@@ -117,12 +125,10 @@ function initContactForm(formId, formspreeId) {
         }
     });
 }
-function initDemoForm(formId, formspreeId) {
+function initDemoForm(formId) {
     const form = document.getElementById(formId);
     if (!form)
         return;
-    form.action = `https://formspree.io/f/${formspreeId}`;
-    form.method = 'POST';
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = (getFormElement(formId, 'name')?.value ?? '').trim();
@@ -147,10 +153,17 @@ function initDemoForm(formId, formspreeId) {
             statusEl.className = 'form-status mt-3 text-sm text-gray-600';
         }
         try {
-            const res = await fetch(form.action, {
+            const res = await fetch(FORMSUBMIT_URL, {
                 method: 'POST',
-                body: JSON.stringify({ name, email, phone, plan: plan || app, type: 'demo' }),
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    plan: plan || app || 'Demo request',
+                    type: 'demo',
+                    _subject: 'IT Vendo - Demo Request',
+                }),
             });
             if (res.ok) {
                 if (statusEl) {
@@ -267,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'GymMaster',
         'PropManager',
     ];
-    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // Replace with your Formspree form ID
     initRotatingText({
         containerId: 'rotating-text',
         items: ROTATING_TEXTS,
@@ -277,9 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     initScrollReveal('.animate-on-scroll');
     initScrollReveal('.app-card', { threshold: 0.2 });
-    initContactForm('contact-form', FORMSPREE_ID);
-    initContactForm('contact-form-modal', FORMSPREE_ID);
-    initDemoForm('demo-form', FORMSPREE_ID);
+    initContactForm('contact-form');
+    initContactForm('contact-form-modal');
+    initDemoForm('demo-form');
     initMobileNav();
     initFormModals();
     initSmoothScroll();
