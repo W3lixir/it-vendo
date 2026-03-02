@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4A154B">
+    <title>RxAudit - Pharmacy Management for Philippine Pharmacies | IT Vendo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{'brand-purple':'#4A154B','brand-green':'#007A5A','brand-blue':'#1264A3','brand-orange':'#FF9900'}}}}</script>
+    <style>
+        .sticky-cta-bar { transform: translateY(-100%); opacity: 0; transition: all 0.3s ease; }
+        .sticky-cta-bar.visible { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body class="bg-white antialiased">
+    <!-- Sticky Header with CTA -->
+    <header id="sticky-header" class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm sticky-cta-bar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../landing-page.html" class="text-brand-purple font-bold flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    IT Vendo
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="tel:+639171234567" class="hidden sm:inline text-gray-600 hover:text-brand-purple">📞 (02) 8123-4567</a>
+                    <a href="../landing-page.html#contact" class="bg-brand-orange text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Schedule Demo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Run your pharmacy <span class="text-brand-purple">faster and smarter</span> — for Philippine pharmacy owners tired of manual work and compliance headaches
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Inventory, dispensing, members, OPEX, calendar, suppliers & training — all in one. Role-based access, SMS notifications, label printing. Built for Philippine pharmacies.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../landing-page.html#contact" class="inline-flex items-center gap-2 bg-brand-purple text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition-colors">
+                            Schedule Demo
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </a>
+                        <a href="https://drive.google.com/file/d/10a72MKdHSMCwfd3mpzF9o0xxLEwwU2Fw/view" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors">
+                            Watch Demo Video
+                        </a>
+                    </div>
+                    <p class="mt-8 text-gray-500 flex items-center gap-2">
+                        30+ pharmacies trusted RxAudit
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="aspect-video rounded-2xl overflow-hidden border-2 border-purple-200 shadow-lg">
+                        <iframe src="https://drive.google.com/file/d/10a72MKdHSMCwfd3mpzF9o0xxLEwwU2Fw/preview" class="w-full h-full" allow="autoplay" allowfullscreen title="RxAudit Demo Video"></iframe>
+                    </div>
+                    <a href="https://drive.google.com/file/d/10a72MKdHSMCwfd3mpzF9o0xxLEwwU2Fw/view" target="_blank" rel="noopener noreferrer" class="block mt-2 text-sm text-brand-purple font-medium hover:underline">Open in full screen →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SOCIAL PROOF BAR -->
+    <section class="bg-gray-50 py-8 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-8">
+                <div class="flex items-center gap-6 opacity-70">
+                    <span class="text-lg font-semibold text-gray-700">Trusted by independent pharmacists in Metro Manila</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-500 text-xl">★★★★★</span>
+                    <span class="text-gray-700 font-semibold">4.9/5</span>
+                    <span class="text-gray-500 text-sm">from 30 reviews</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROBLEM SECTION -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Are you struggling with...</h2>
+            <ul class="space-y-4 text-lg text-gray-700 text-left max-w-2xl mx-auto">
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Manual inventory</strong> — spending hours counting stock and chasing expiry dates</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>BIR compliance stress</strong> — worried about audit penalties and late submissions</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Dispensing errors</strong> — risking patient safety and your pharmacy's reputation</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Lost revenue</strong> — expired inventory and manual processes eating into your profits every month</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Supplier chaos</strong> — manual purchase orders, lost invoices, no visibility on deliveries</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Member & discount confusion</strong> — hard to track Senior, PWD, and HMO discounts at the counter</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>Multi-branch blindness</strong> — can't see stock levels or sales across branches in real time</span>
+                </li>
+                <li class="flex gap-3 items-start">
+                    <span class="text-red-500 text-xl">✗</span>
+                    <span><strong>OPEX in the dark</strong> — unclear where money goes, hard to reconcile daily sales and expenses</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. FEATURES SECTION -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16">Everything you need to run a compliant pharmacy</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">📊</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Inventory management</h3>
+                    <p class="text-gray-600 text-sm">Track products, stock levels, batch numbers, expiry dates. Reorder alerts. Barcode & OCR label scanning. Handles 300+ items efficiently.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">💊</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Dispensing system</h3>
+                    <p class="text-gray-600 text-sm">Patient selection, prescription management, label printing. Full dispensing history and transaction records.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">👥</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Member management</h3>
+                    <p class="text-gray-600 text-sm">Patient records, loyalty points, QR codes. SMS notifications via PhilSMS. Track total purchases and last visit.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">📋</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">OPEX & accounting</h3>
+                    <p class="text-gray-600 text-sm">Sales tracking, COGS calculation, expense management. Payment methods, receipt numbers. Reports ready for BIR.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">📅</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Calendar & reminders</h3>
+                    <p class="text-gray-600 text-sm">Refill reminders, dispense transactions on calendar. Never miss a patient refill again.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">🏪</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Supplier management</h3>
+                    <p class="text-gray-600 text-sm">Supplier records, purchase orders. Track expected delivery, order status. Full procurement workflow.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">🎓</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Training & quest system</h3>
+                    <p class="text-gray-600 text-sm">Employee training and gamification. Track scores, quest completions. Build a knowledgeable team.</p>
+                </div>
+                <div class="p-6 border border-gray-200 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mb-4 rounded-lg bg-purple-100 flex items-center justify-center text-brand-purple">🔐</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Role-based access</h3>
+                    <p class="text-gray-600 text-sm">Owner: full access, COGS, expenses, delete. Assistant: daily ops only. UI & API restrictions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. HOW IT WORKS -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16">How it works</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-purple text-white flex items-center justify-center text-2xl font-bold">1</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Book your demo</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 text-left max-w-xs mx-auto">
+                        <li>• Schedule free 30-min call</li>
+                        <li>• See how it works for Philippine pharmacies</li>
+                        <li>• No commitment required</li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-purple text-white flex items-center justify-center text-2xl font-bold">2</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Get your account</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 text-left max-w-xs mx-auto">
+                        <li>• After your demo call</li>
+                        <li>• Personalized account setup</li>
+                        <li>• Flexible payment terms</li>
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-purple text-white flex items-center justify-center text-2xl font-bold">3</div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Start immediately</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 text-left max-w-xs mx-auto">
+                        <li>• Instant web app access</li>
+                        <li>• Personal setup guidance</li>
+                        <li>• Start saving hours from day one</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TESTIMONIALS -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-16">What Philippine pharmacists are saying</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-amber-500">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6">"RxAudit transformed how we operate. We went from 6 hours of daily admin work to 30 minutes. Our patients are happier, our staff is less stressed, and our profits increased 25%."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-brand-purple font-bold">MS</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Dr. Maria Santos</div>
+                            <div class="text-sm text-gray-600">Owner, Santos Family Pharmacy Chain</div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-sm text-brand-green font-semibold">Saved ₱50k in first month</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-amber-500">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6">"BIR compliance used to keep me up at night. Now I generate reports in one click. Audits are stress-free. Best investment we've made."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-brand-purple font-bold">RC</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Ramon Cruz</div>
+                            <div class="text-sm text-gray-600">Cruz Pharmacy, Quezon City</div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-sm text-brand-green font-semibold">90% fewer dispensing errors</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-amber-500">★★★★★</span>
+                    </div>
+                    <p class="text-gray-700 mb-6">"We manage 5 branches from one dashboard. Inventory transfers, consolidated reports — everything in one place. Game changer for growing pharmacies."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center text-brand-purple font-bold">AL</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Anna Lim</div>
+                            <div class="text-sm text-gray-600">Lim Health Pharmacies</div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-sm text-brand-green font-semibold">5+ hours saved daily</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. URGENCY / SCARCITY -->
+    <section class="py-12 bg-amber-50 border-y-2 border-amber-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-2xl font-bold text-amber-800 mb-2">📅 Free 30-minute consultation</p>
+            <p class="text-gray-700 mb-4">See RxAudit in action. We'll walk you through how it fits your pharmacy — no obligation.</p>
+            <a href="../landing-page.html#contact" class="inline-block bg-amber-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-amber-600 transition-colors">Schedule Demo</a>
+        </div>
+    </section>
+
+    <!-- 12. FINAL CTA -->
+    <section id="cta" class="py-20 lg:py-28 bg-brand-purple">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">Let's find the right solution for your pharmacy.</h2>
+            <p class="text-xl text-purple-200 mb-8">Book a free demo or call us for a quick chat.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="../landing-page.html#contact" class="inline-block bg-white text-brand-purple px-10 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors">Schedule Demo</a>
+                <a href="tel:+639171234567" class="inline-block border-2 border-white text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition-colors">📞 (02) 8123-4567</a>
+            </div>
+            <p class="mt-6 text-purple-200 text-sm">Questions? Email us at <a href="mailto:hello@itvendo.com" class="underline">hello@itvendo.com</a></p>
+        </div>
+    </section>
+
+    <!-- 13. FOOTER -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-xl font-bold text-brand-orange mb-4">RxAudit</div>
+                    <p class="text-gray-400 text-sm">Pharmacy management for Philippine pharmacies. BIR-compliant. Built for scale.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-400 text-sm">📞 +63 917 123 4567</p>
+                    <p class="text-gray-400 text-sm">✉️ hello@itvendo.com</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <a href="#" class="block text-gray-400 hover:text-white text-sm mb-2">Privacy Policy</a>
+                    <a href="#" class="block text-gray-400 hover:text-white text-sm mb-2">Terms of Service</a>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Trust</h4>
+                    <div class="flex gap-4 text-gray-400 text-sm">
+                        <span>🔒 SSL Secured</span>
+                        <span>✓ BIR Compliant</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                © IT Vendo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo: app pages link to main landing #contact -->
+
+    <!-- Live chat placeholder -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="w-14 h-14 rounded-full bg-brand-purple text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition-colors" title="Chat with us">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </button>
+    </div>
+
+    <script src="../dist/landing.js"></script>
+    <script>
+        // Sticky header on scroll
+        const header = document.getElementById('sticky-header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled > 400) header?.classList.add('visible');
+            else header?.classList.remove('visible');
+        });
+        // Trial modal open
+        document.querySelectorAll('[data-trial-open]').forEach(btn => {
+            btn.addEventListener('click', e => { e.preventDefault(); document.getElementById('trial-modal').classList.remove('hidden'); });
+        });
+        // Exit intent popup - when mouse leaves viewport toward top
+        document.addEventListener('mouseout', e => {
+            if (e.clientY > 0) return;
+            const modal = document.getElementById('trial-modal');
+            if (modal && !modal.classList.contains('hidden')) return;
+            document.getElementById('trial-modal')?.classList.remove('hidden');
+        }, { once: true });
+    </script>
+</body>
+</html>

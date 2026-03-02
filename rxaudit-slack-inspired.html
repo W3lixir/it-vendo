@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxAudit - Philippine Pharmacy Management Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-purple': '#4A154B',
+                        'brand-green': '#007A5A',
+                        'brand-blue': '#1264A3'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="border-b border-gray-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-brand-purple">RxAudit</div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-gray-900">Pricing</a>
+                    <button class="bg-brand-purple text-white px-4 py-2 rounded-md hover:bg-purple-700">
+                        Try for Free
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Slack Style -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Run your pharmacy faster and smarter, with automation, compliance, and AI at your side.
+            </h1>
+            
+            <!-- Rotating Use Cases (Slack Style) -->
+            <div class="mb-8">
+                <div class="inline-flex space-x-8 text-lg text-gray-600" id="rotating-text">
+                    <span class="animate-pulse">Track inventory</span>
+                    <span class="opacity-50">Dispense medications</span>
+                    <span class="opacity-50">Manage patients</span>
+                    <span class="opacity-50">Generate BIR reports</span>
+                    <span class="opacity-50">Monitor expiries</span>
+                </div>
+            </div>
+            
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Join 500+ Philippine pharmacies using RxAudit to save 5+ hours daily and prevent costly errors.
+            </p>
+            
+            <div class="flex justify-center space-x-4">
+                <button class="bg-brand-purple text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-purple-700">
+                    Start Free Trial
+                </button>
+                <button class="border border-gray-300 text-gray-700 px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-50">
+                    Watch Demo
+                </button>
+            </div>
+            
+            <!-- Social Proof -->
+            <div class="mt-16">
+                <p class="text-sm text-gray-500 mb-8">Trusted by leading Philippine pharmacies</p>
+                <div class="flex justify-center items-center space-x-8 opacity-60">
+                    <div class="text-lg font-semibold">Mercury Drug</div>
+                    <div class="text-lg font-semibold">TGP</div>
+                    <div class="text-lg font-semibold">Generics Pharmacy</div>
+                    <div class="text-lg font-semibold">Rose Pharmacy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Value Proposition (Slack's AI Section Style) -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                    Reimagine what's possible with smart pharmacy management.
+                </h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                    RxAudit doesn't just digitize your pharmacy - it makes every process smarter, 
+                    faster, and more profitable than ever.
+                </p>
+            </div>
+            
+            <!-- Feature Grid (Slack Style) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h3 class="font-semibold mb-2">Smart inventory tracking</h3>
+                    <p class="text-gray-600 text-sm">Never run out of stock again</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">💊</div>
+                    <h3 class="font-semibold mb-2">Safe dispensing workflow</h3>
+                    <p class="text-gray-600 text-sm">Prevent dangerous drug interactions</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">📋</div>
+                    <h3 class="font-semibold mb-2">One-click BIR compliance</h3>
+                    <p class="text-gray-600 text-sm">Generate tax reports instantly</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">⏰</div>
+                    <h3 class="font-semibold mb-2">Automated expiry alerts</h3>
+                    <p class="text-gray-600 text-sm">Save thousands in expired inventory</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">👥</div>
+                    <h3 class="font-semibold mb-2">Patient management</h3>
+                    <p class="text-gray-600 text-sm">Refill reminders via SMS</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="font-semibold mb-2">Mobile-first design</h3>
+                    <p class="text-gray-600 text-sm">Works on any device, anywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Pillars Section (Slack's Knowledge/People/Process) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Knowledge Pillar -->
+            <div class="mb-20">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">💡 Intelligence</h2>
+                        <h3 class="text-xl font-semibold mb-4">Meet RxAI: Your smart pharmacy assistant.</h3>
+                        <p class="text-gray-600 mb-6">
+                            RxAI isn't just any system. It learns your pharmacy's patterns, 
+                            predicts what you need, and helps decisions get made faster.
+                        </p>
+                        <a href="#" class="text-brand-purple font-semibold hover:underline">
+                            Learn more about RxAI →
+                        </a>
+                        
+                        <div class="mt-8 bg-purple-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-brand-purple">5+ hrs</div>
+                            <div class="text-sm text-gray-600">average time saved daily with RxAudit¹</div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 h-96 rounded-lg flex items-center justify-center">
+                        <p class="text-gray-500">Dashboard Screenshot</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- People Pillar -->
+            <div class="mb-20">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 bg-gray-100 h-96 rounded-lg flex items-center justify-center">
+                        <p class="text-gray-500">Team Management Screenshot</p>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">👥 Team</h2>
+                        <h3 class="text-xl font-semibold mb-4">It all starts with your staff.</h3>
+                        <p class="text-gray-600 mb-6">
+                            Role-based access keeps your team organized and your data secure. 
+                            Owners see everything, assistants see what they need.
+                        </p>
+                        <a href="#" class="text-brand-purple font-semibold hover:underline">
+                            Learn about team management →
+                        </a>
+                        
+                        <div class="mt-8 bg-green-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-brand-green">90%</div>
+                            <div class="text-sm text-gray-600">reduction in dispensing errors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Pillar -->
+            <div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">⚙️ Process</h2>
+                        <h3 class="text-xl font-semibold mb-4">Anyone can automate their pharmacy.</h3>
+                        <p class="text-gray-600 mb-6">
+                            From inventory alerts to patient reminders, RxAudit automates 
+                            the repetitive tasks so you can focus on patient care.
+                        </p>
+                        <a href="#" class="text-brand-purple font-semibold hover:underline">
+                            See all automation features →
+                        </a>
+                        
+                        <div class="mt-8 bg-blue-50 p-4 rounded-lg">
+                            <div class="text-3xl font-bold text-brand-blue">₱50k+</div>
+                            <div class="text-sm text-gray-600">average monthly savings per pharmacy</div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 h-96 rounded-lg flex items-center justify-center">
+                        <p class="text-gray-500">Automation Screenshot</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Quote (Slack Style) -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <blockquote class="text-2xl font-medium text-gray-900 mb-8">
+                "RxAudit transformed how we operate. We went from 6 hours of daily admin work to 30 minutes. 
+                Our patients are happier, our staff is less stressed, and our profits increased 25%."
+            </blockquote>
+            <div class="flex items-center justify-center">
+                <div>
+                    <div class="font-semibold text-gray-900">Dr. Maria Santos</div>
+                    <div class="text-gray-600">Owner, Santos Family Pharmacy Chain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (Slack Style) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">
+                We're in the business of growing pharmacies.
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-brand-purple mb-2">500+</div>
+                    <div class="text-sm text-gray-600">Active pharmacies</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-brand-purple mb-2">1M+</div>
+                    <div class="text-sm text-gray-600">Prescriptions processed monthly</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-brand-purple mb-2">99.9%</div>
+                    <div class="text-sm text-gray-600">System uptime</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-brand-purple mb-2">₱10M+</div>
+                    <div class="text-sm text-gray-600">Saved in prevented errors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-brand-purple">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-3xl font-bold text-white mb-6">
+                Your pharmacy transformation starts here.
+            </h2>
+            <p class="text-xl text-purple-200 mb-8">
+                Join the 500+ pharmacies already saving time and money with RxAudit.
+            </p>
+            <button class="bg-white text-brand-purple px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-100">
+                Start Your Free Trial
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4">RxAudit</div>
+                <p class="text-gray-400 mb-4">Modern pharmacy management for the Philippines</p>
+                <div class="text-sm text-gray-500">
+                    ¹Based on internal analysis of 247 active pharmacy customers.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

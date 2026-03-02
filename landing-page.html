@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#4A154B">
+    <title>IT Vendo - Business App Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-purple': '#4A154B',
+                        'brand-orange': '#FF9900',
+                        'brand-green': '#007A5A'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .animate-on-scroll { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .animate-on-scroll.animate-reveal { opacity: 1; transform: translateY(0); }
+        .app-card { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .app-card.animate-reveal { opacity: 1; transform: translateY(0); }
+        .star-filled { color: #fbbf24; }
+        .star-empty { color: #e5e7eb; }
+        @media screen and (max-width: 768px) { input, select, textarea { font-size: 16px !important; } }
+        .touch-target { min-height: 44px; min-width: 44px; }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+    <!-- Nav -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-2 sm:gap-4 h-14">
+                <a href="landing-page.html" class="text-lg sm:text-xl font-bold text-brand-orange shrink-0">IT Vendo</a>
+                <!-- Search -->
+                <div class="flex-1 min-w-0 max-w-2xl">
+                    <div class="relative">
+                        <input type="text" id="app-search" placeholder="Search apps..." class="w-full px-3 sm:px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-400 border border-gray-700 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none text-sm sm:text-base">
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </span>
+                    </div>
+                </div>
+                <a href="tel:+639171234567" class="text-brand-orange font-semibold hover:text-amber-400 shrink-0 touch-target flex items-center text-sm sm:text-base">📞 (02) 8123-4567</a>
+                <button type="button" data-demo-open data-app="" class="text-gray-300 hover:text-white shrink-0 touch-target flex items-center text-sm sm:text-base">Schedule Demo</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4">Business apps for every industry</h1>
+            <p class="text-lg text-gray-300 mb-4">Pharmacy, clinics, retail, restaurants & more — let's find the right solution for your business.</p>
+            <p class="text-xl font-semibold text-brand-orange mb-8">📞 Call us: <a href="tel:+639171234567" class="underline hover:text-amber-400">(02) 8123-4567</a> · We'll help you choose</p>
+            <!-- Category pills -->
+            <div class="flex flex-wrap gap-2">
+                <button type="button" class="category-btn active px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-brand-orange text-white text-xs sm:text-sm font-medium" data-category="all">All</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="healthcare">Healthcare</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="beauty">Beauty</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="food">Food</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="retail">Retail</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="education">Education</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="fitness">Fitness</button>
+                <button type="button" class="category-btn px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-700 hover:bg-gray-600 text-xs sm:text-sm" data-category="property">Property</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Apps -->
+    <section id="apps" class="py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Browse apps</h2>
+            <p class="text-gray-600 mb-8">Each solution is tailored to your business. Book a free demo to see how we can help.</p>
+            <div id="apps-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                <!-- RxAudit - Bestseller -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200" data-category="healthcare" data-search="rxaudit pharmacy">
+                    <a href="apps/rxaudit.html" class="block">
+                        <span class="inline-block text-xs font-bold bg-amber-500 text-white px-2 py-0.5 rounded mb-2">#1 BESTSELLER</span>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-purple-100 flex items-center justify-center text-brand-purple">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 0 0-1.022-.547l-2.387-.477a6 6 0 0 0-3.86.517l-.318.158a6 6 0 0 1-3.86.517L6.05 15.21a2 2 0 0 0-1.806.547M8 4h8l-1 1v5.172a2 2 0 0 0 .586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 0 0 9 10.172V5L8 4Z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">RxAudit</h3>
+                        <p class="text-gray-600 text-sm mb-3">Pharmacy management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★★</span>
+                            <span class="text-xs text-gray-500">(128)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <button type="button" data-demo-open data-app="rxaudit" class="flex-1 text-center bg-brand-orange text-white py-2 rounded-lg text-sm font-semibold hover:bg-amber-600 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- DentalCare Pro - New Release -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="healthcare" data-search="dentalcare dental clinic">
+                    <a href="apps/dentalcare.html" class="block">
+                        <span class="inline-block text-xs font-bold bg-green-600 text-white px-2 py-0.5 rounded mb-2">NEW RELEASE</span>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-cyan-100 flex items-center justify-center text-cyan-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 0 1-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">DentalCare Pro</h3>
+                        <p class="text-gray-600 text-sm mb-3">Dental clinic appointments</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(24)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <button type="button" data-demo-open data-app="dentalcare" class="flex-1 text-center bg-brand-orange text-white py-2 rounded-lg text-sm font-semibold hover:bg-amber-600 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- MedSched - Popular Choice -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="healthcare" data-search="medsched doctor appointment">
+                    <a href="apps/medsched.html" class="block">
+                        <span class="inline-block text-xs font-bold bg-blue-600 text-white px-2 py-0.5 rounded mb-2">POPULAR CHOICE</span>
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">MedSched</h3>
+                        <p class="text-gray-600 text-sm mb-3">Doctor appointment booking</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★★</span>
+                            <span class="text-xs text-gray-500">(92)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="medsched" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- LabFlow - Premium -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="healthcare" data-search="labflow laboratory">
+                    <a href="apps/labflow.html" class="block">
+                        <span class="inline-block text-xs font-bold bg-purple-600 text-white px-2 py-0.5 rounded mb-2">PREMIUM</span>
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-violet-100 flex items-center justify-center text-violet-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57-1.402a2.25 2.25 0 0 0-.659-1.591V8.104m0 0c-.251.023-.501.05-.75.082"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">LabFlow</h3>
+                        <p class="text-gray-600 text-sm mb-3">Laboratory management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(18)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="labflow" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- EduManage - Budget -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="education" data-search="edumanage tutorial education">
+                    <a href="apps/edumanage.html" class="block">
+                        <span class="inline-block text-xs font-bold bg-teal-600 text-white px-2 py-0.5 rounded mb-2">BUDGET-FRIENDLY</span>
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">EduManage</h3>
+                        <p class="text-gray-600 text-sm mb-3">Tutorial center management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(31)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="edumanage" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- BeautyBook -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="beauty" data-search="beautybook salon spa">
+                    <a href="apps/beautybook.html" class="block">
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-pink-100 flex items-center justify-center text-pink-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">BeautyBook</h3>
+                        <p class="text-gray-600 text-sm mb-3">Beauty clinic management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(12)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="beautybook" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- FoodFlow -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="food" data-search="foodflow restaurant pos">
+                    <a href="apps/foodflow.html" class="block">
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-orange-100 flex items-center justify-center text-orange-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9l-3 3m0 0l-3-3m3 3V10.5m-12 0V18m0-7.5v3"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">FoodFlow</h3>
+                        <p class="text-gray-600 text-sm mb-3">Restaurant POS</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(45)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="foodflow" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- RetailPro -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="retail" data-search="retailpro retail store">
+                    <a href="apps/retailpro.html" class="block">
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">RetailPro</h3>
+                        <p class="text-gray-600 text-sm mb-3">Retail store management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★★</span>
+                            <span class="text-xs text-gray-500">(67)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="retailpro" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- GymMaster -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="fitness" data-search="gymmaster gym fitness">
+                    <a href="apps/gymmaster.html" class="block">
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-red-100 flex items-center justify-center text-red-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.75 21a2.25 2.25 0 01-3.354-2.186 2.25 2.25 0 01.154-2.28l1.354-1.354M6.75 21v-2.25m0-4.5v-2.25m0-4.5v-2.25m0 4.5h2.25m-4.5 0H4.5m2.25 0h2.25m0 0h2.25M17.25 21a2.25 2.25 0 003.354-2.186 2.25 2.25 0 00-.154-2.28l-1.354-1.354M17.25 21v-2.25m0-4.5v-2.25m0-4.5v-2.25m0 4.5h2.25m-4.5 0H6.75m2.25 0h2.25m0 0h2.25m0 0H17.25"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">GymMaster</h3>
+                        <p class="text-gray-600 text-sm mb-3">Gym management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(38)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="gymmaster" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+
+                <!-- PropManager -->
+                <div class="app-card bg-white p-4 sm:p-5 rounded-xl shadow-sm hover:shadow-lg border border-gray-200 relative" data-category="property" data-search="propmanager property rental">
+                    <a href="apps/propmanager.html" class="block">
+                        <div class="absolute top-2 right-2"><span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">COMING SOON</span></div>
+                        <div class="w-12 h-12 mb-3 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 12h6"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-1">PropManager</h3>
+                        <p class="text-gray-600 text-sm mb-3">Property management</p>
+                        <div class="flex items-center gap-1 mb-2">
+                            <span class="star-filled">★★★★☆</span>
+                            <span class="text-xs text-gray-500">(22)</span>
+                        </div>
+                    </a>
+                    <div class="flex gap-2 mt-2">
+                        <span class="flex-1 text-center bg-gray-300 text-gray-500 py-2 rounded-lg text-sm font-semibold">Coming Soon</span>
+                        <button type="button" data-demo-open data-app="propmanager" class="flex-1 py-2 rounded-lg text-sm font-semibold border-2 border-brand-purple text-brand-purple hover:bg-purple-50 transition-colors">Schedule Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Have questions? Let's talk.</h2>
+                <p class="text-gray-600">We're here to help. Call us for a quick chat or send a message — we'll get back to you within 24 hours.</p>
+                <p class="mt-4 text-xl font-semibold text-brand-purple"><a href="tel:+639171234567" class="underline hover:text-amber-600">📞 (02) 8123-4567</a></p>
+            </div>
+            <form id="contact-form" class="space-y-4">
+                <input type="hidden" name="_subject" value="IT Vendo - Contact">
+                <div>
+                    <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="contact-name" name="name" required placeholder="Your name" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                </div>
+                <div>
+                    <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="contact-email" name="email" required placeholder="you@company.com" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                </div>
+                <div>
+                    <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea id="contact-message" name="message" required rows="4" placeholder="Tell us what you need" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none resize-none"></textarea>
+                </div>
+                <div>
+                    <label for="contact-plan" class="block text-sm font-medium text-gray-700 mb-1">App you're interested in</label>
+                    <select id="contact-plan" name="plan" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                        <option value="">General inquiry</option>
+                        <option value="rxaudit">RxAudit</option>
+                        <option value="dentalcare">DentalCare Pro</option>
+                        <option value="medsched">MedSched</option>
+                        <option value="labflow">LabFlow</option>
+                        <option value="edumanage">EduManage</option>
+                        <option value="beautybook">BeautyBook</option>
+                        <option value="foodflow">FoodFlow</option>
+                        <option value="retailpro">RetailPro</option>
+                        <option value="gymmaster">GymMaster</option>
+                        <option value="propmanager">PropManager</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-orange text-white py-3 rounded-md font-semibold hover:bg-amber-600 transition-colors touch-target">
+                    Send message
+                </button>
+                <div class="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Demo Request Modal (lead capture) -->
+    <div id="demo-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-modal="true">
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="fixed inset-0 bg-black/50 transition-opacity" data-modal-close="demo-modal"></div>
+            <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6 sm:p-8">
+                <button type="button" data-modal-close="demo-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Schedule a demo</h3>
+                <p class="text-gray-600 mb-6">Tell us a bit about yourself. We'll reach out to set up a personalized walkthrough.</p>
+                <form id="demo-form" class="space-y-4">
+                    <input type="hidden" name="_subject" value="IT Vendo - Demo Request">
+                    <input type="hidden" id="demo-app" name="app" value="">
+                    <div>
+                        <label for="demo-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="demo-name" name="name" required placeholder="Your name" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                    </div>
+                    <div>
+                        <label for="demo-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="demo-email" name="email" required placeholder="you@company.com" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                    </div>
+                    <div>
+                        <label for="demo-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <input type="tel" id="demo-phone" name="phone" placeholder="(02) 1234-5678" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                    </div>
+                    <div>
+                        <label for="demo-plan" class="block text-sm font-medium text-gray-700 mb-1">App you're interested in</label>
+                        <select id="demo-plan" name="plan" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none">
+                            <option value="rxaudit">RxAudit</option>
+                            <option value="dentalcare">DentalCare Pro</option>
+                            <option value="medsched">MedSched</option>
+                            <option value="labflow">LabFlow</option>
+                            <option value="edumanage">EduManage</option>
+                            <option value="beautybook">BeautyBook</option>
+                            <option value="foodflow">FoodFlow</option>
+                            <option value="retailpro">RetailPro</option>
+                            <option value="gymmaster">GymMaster</option>
+                            <option value="propmanager">PropManager</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-orange text-white py-3 rounded-md font-semibold hover:bg-amber-600 transition-colors">Request demo</button>
+                    <div class="form-status mt-3 text-sm"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-2xl font-bold text-brand-orange mb-4">IT Vendo</div>
+            <p class="text-gray-400 mb-2">Business solutions for the Philippines · Consultations &amp; demos</p>
+            <p class="text-xl font-semibold text-brand-orange mb-4"><a href="tel:+639171234567" class="hover:text-amber-400">📞 (02) 8123-4567</a></p>
+            <div class="flex justify-center gap-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-white">Terms</a>
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#contact" class="hover:text-white">Contact</a>
+                <a href="#contact" class="hover:text-white">Schedule Demo</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dist/landing.js"></script>
+    <script>
+        // Search
+        document.getElementById('app-search')?.addEventListener('input', function() {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('.app-card').forEach(card => {
+                const search = (card.getAttribute('data-search') || '').toLowerCase();
+                const name = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                const match = !q || search.includes(q) || name.includes(q);
+                card.style.display = match ? '' : 'none';
+            });
+        });
+        // Demo modal - open and set app
+        document.querySelectorAll('[data-demo-open]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const app = this.getAttribute('data-app') || '';
+                document.getElementById('demo-modal').classList.remove('hidden');
+                document.getElementById('demo-app').value = app;
+                const planSelect = document.getElementById('demo-plan');
+                if (planSelect && app) planSelect.value = app;
+            });
+        });
+        document.querySelectorAll('[data-modal-close="demo-modal"]').forEach(el => {
+            el.addEventListener('click', () => document.getElementById('demo-modal').classList.add('hidden'));
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('demo-modal').classList.add('hidden'); });
+        // Categories
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-brand-orange');
+                    b.classList.add('bg-gray-700');
+                });
+                this.classList.add('active', 'bg-brand-orange');
+                this.classList.remove('bg-gray-700');
+                const cat = this.getAttribute('data-category');
+                document.querySelectorAll('.app-card').forEach(card => {
+                    const cardCat = card.getAttribute('data-category');
+                    card.style.display = (cat === 'all' || cardCat === cat) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
